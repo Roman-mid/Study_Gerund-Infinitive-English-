@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
-import { gerung, infinitive, wrong } from './words';
+import { gerung, infinitive } from './words';
 import ModalScore from './components/ModalScore';
 import { ScoreType, Word } from './App.types';
 import ModalWrongWords from './components/ModalWrongWords';
-
-
 
 
 function App() {
@@ -60,9 +58,6 @@ function App() {
     setCount((prev) => prev + 1);
 
     setTimeout(() => {
-      // if((score.correct + score.noCorrect) === (infinitive.length + gerung.length - 1)) {
-      //   setFinish(true);
-      // };
       if(count === (infinitive.length + gerung.length - 1)) {
         setFinish(true);
       };
@@ -87,7 +82,6 @@ function App() {
     <div className={correct === "Correct" ? "App correct" : correct === "False" ? "App noCorrect"  : 'App'}>
       <div className="container">
         <h1 className="title">What do you need use with word?</h1>
-        {/* <h1 className="word">{translate ? word.translate : word.english}</h1> */}
         <h1 className="word">{translate ? word[1] : word[0]}</h1>
         <div className="btnsWrap">
           <div className="btnChoose">
@@ -128,18 +122,13 @@ function App() {
         tryAgain={tryAgain}
         setModalWrongWords={setModalWrongWords}
         setFinish={setFinish}
-        // setScore={setScore}
-        // setCount={setCount}
-        // setInfinitiveWords={setInfinitiveWords}
-        // setGerungWords={setGerungWords}
       />
     }
     {modalWrongWords &&
       <ModalWrongWords
         tryAgain={tryAgain}
         setModalWrongWords={setModalWrongWords}
-        noCorrectWord={wrong}
-        // noCorrectWord={noCorrectWord}
+        noCorrectWord={noCorrectWord}
       />
     }
     </>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { createPortal } from 'react-dom';
 import { ModalType } from '../App.types';
-import { gerung, infinitive } from '../words';
 
 const modal = document.querySelector('#modal');
 
