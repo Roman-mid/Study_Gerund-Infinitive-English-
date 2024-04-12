@@ -12,7 +12,6 @@
   transition: 1s;
 }
 
-
 .correct {
   background-position: 100% 100%;
 }
@@ -24,6 +23,13 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+p,
+h1, h1,
+button {
+  color: #240b36;
 }
 
 p, 
@@ -32,7 +38,8 @@ button {
 }
 
 .container {
-  width: 400px;
+  max-width: 340px;
+  width: 100%;
   margin: 0 auto;
   padding: 100px 0;
   display: flex;
@@ -43,7 +50,6 @@ button {
 .word {
   font-size: 35px;
   letter-spacing: 2px;
-  color: #240b36;
 }
 
 .title {
@@ -51,12 +57,19 @@ button {
   font-size: 25px;
 }
 
-.btnsWrap {
+.btnChoose {
   display: flex;
-  gap: 20px;
-  margin: 0 auto;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
+.totalScore {
+  font-size: 35px;
+  text-decoration: underline;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 2px;
+}
 
 .score {
   font-size: 25px;
@@ -67,29 +80,86 @@ button {
   cursor: pointer;
   width: 160px;
   height: 50px;
-  color: #240b36;
   outline: none;
   border: 2px solid #240b36;
   background: none;
   letter-spacing: 2px;
   transition: 0.5s;
 }
-
+.btnTranslate {
+  width: 100%;
+}
+.btnModal {
+  width: 300px;
+}
 .btn:active {
   color: #fff;
   background: #240b36;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
 
-@media(max-width: 400px) {
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(45deg, #ff00009a, #fff2003b, #1e9600af);
+  background-position: 50% 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.modalContent p {
+  text-align: center;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  overflow: scroll;
+  height: 80vh;
+}
+
+li {
+  display: block;
+}
+
+li p {
+  text-align-last: left;
+}
+
+@media(max-width: 340px) {
   .container {
-    width: auto;
+    /* width: auto; */
     padding: 0 10px;
   }
 
   .btn {
-    width: 120px;
+    width: 140px;
     letter-spacing: 1.5px;
+  }
+
+  .btnModal {
+    width: 300px;
+  }
+
+  .btnTranslate {
+    width: 100%;
   }
 }
 
