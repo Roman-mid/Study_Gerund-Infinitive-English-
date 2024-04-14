@@ -73,7 +73,7 @@ button {
 
 .score {
   font-size: 25px;
-  color: #240b36;
+  text-align: center;
 }
 
 .btn {
@@ -122,26 +122,23 @@ button {
   width: 100vw;
 }
 
-.modalContent p {
-  text-align: center;
-}
-
-ul {
+.list {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
   overflow: scroll;
   height: 70vh;
+  width: 300px;
 }
 
-li {
+.item {
   display: block;
 }
 
-li p {
+/* .item p {
   text-align-last: left;
-}
+} */
 
 @media(max-width: 340px) {
   .container {

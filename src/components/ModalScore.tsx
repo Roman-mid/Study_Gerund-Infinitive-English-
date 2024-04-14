@@ -20,7 +20,7 @@ const ModalScore: React.FC<ModalType> = ({score, numberWords, tryAgain, setModal
           <p className="score">no correct: {score.noCorrect} </p>
         </div>
             <button className="btn btnModal" onClick={tryAgain}>Try again</button>
-            <button className="btn btnModal" onClick ={click}>Check wrong words</button>
+            <button className="btn btnModal" onClick ={click}>Check mistakes</button>
         </div>
     </div>, modal as Element
   )

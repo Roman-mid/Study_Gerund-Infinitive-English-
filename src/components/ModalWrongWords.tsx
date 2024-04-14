@@ -24,7 +24,7 @@ const ModalWrongWords: React.FC<ModalWrongWordsType> = ({
         <ul className="list">
             {items}
         </ul>
-        <button className="btn btnModal" onClick={restart}> close </button>
+        <button className="btn btnModal" onClick={restart}> Try again </button>
         </div>
     </div>
   )
