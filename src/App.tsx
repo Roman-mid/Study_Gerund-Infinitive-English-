@@ -27,18 +27,32 @@ function App() {
   }, [])
 
   const getWord = () => {
-    const list = getNumber(2);
-    if(list === 0 && infinitiveWords.length) {
+    let list: number = 0 ;
+    if(!infinitiveWords.length && !gerungWords.length) {
+      return
+    };
+    if(infinitiveWords.length && gerungWords.length){
+      list = getNumber(2);
+    };
+    if(!infinitiveWords.length && gerungWords.length) {
+      list = 1;
+    };
+    if(!gerungWords.length && infinitiveWords.length) {
+      list = 0;
+    };
+
+
+
+    if(list === 0) {
       const wordInd:number = getNumber(infinitiveWords.length);
       setWord(infinitiveWords[wordInd]);
       setInfinitiveWords(infinitiveWords.filter(arr => arr !== infinitiveWords[wordInd]));
-    } else if (gerungWords.length) {
+    } else {
       const wordInd = getNumber(gerungWords.length);
       setWord(gerungWords[wordInd]);
       setGerungWords(gerungWords.filter(arr => arr !== gerungWords[wordInd]));
     };
     setTranslate(false);
-
   };
 
   const getResult = (categofy: string) => {
