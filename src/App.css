@@ -2,14 +2,16 @@
   text-align: center;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   background: linear-gradient(45deg, #ff00009a, #fff2003b, #1e9600af);
   background-size: 500%;
   background-position: 50% 50%;
   transition: 1s;
+  color: #240b36;
+  overflow: auto;
+}
+
+.mt-20 {
+  margin-top: 20px;
 }
 
 .correct {
@@ -26,13 +28,18 @@
   box-sizing: border-box;
 }
 
-p,
-h1, h1,
 button {
-  color: #240b36;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
-p, 
+button:disabled {
+  opacity: 0.5;
+}
+
+p,
 button {
   font-size: 20px;
 }
@@ -41,7 +48,8 @@ button {
   max-width: 340px;
   width: 100%;
   margin: 0 auto;
-  padding: 100px 0;
+  padding-top: 60px;
+  padding-bottom: 20px;
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -52,6 +60,10 @@ button {
   letter-spacing: 2px;
 }
 
+.meaning {
+  font-size: 25px;
+}
+
 .title {
   padding: 0 20px;
   font-size: 25px;
@@ -60,7 +72,6 @@ button {
 .btnChoose {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .totalScore {
@@ -77,21 +88,23 @@ button {
 }
 
 .btn {
-  cursor: pointer;
   width: 160px;
-  height: 50px;
+  height: 40px;
   outline: none;
   border: 2px solid #240b36;
-  background: none;
   letter-spacing: 2px;
   transition: 0.5s;
 }
+
 .btnTranslate {
   width: 100%;
+  margin-top: 20px;
 }
+
 .btnModal {
   width: 300px;
 }
+
 .btn:active {
   color: #fff;
   background: #240b36;
@@ -107,15 +120,11 @@ button {
 }
 
 .modalContent {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 10px 0;
   background: linear-gradient(45deg, #ff00009a, #fff2003b, #1e9600af);
   background-position: 50% 50%;
   display: flex;
   flex-direction: column;
-  gap: 50px;
   align-items: center;
   justify-content: center;
   height: 100vh;
@@ -125,22 +134,88 @@ button {
 .list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 5px;
   overflow: scroll;
   height: 70vh;
   width: 300px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .item {
   display: block;
+  padding: 5px 0;
 }
 
-/* .item p {
-  text-align-last: left;
-} */
+.selectLanguage {
+  width: 100%;
+  margin-top: 20px;
+}
 
-@media(max-width: 340px) {
+.selectLanguage span {
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.chooseLangWrap {
+  border: 2px solid #240b36;
+  margin-top: 20px;
+}
+
+.langList {
+  max-height: 300px;
+  overflow: scroll;
+  font-size: 25px;
+  padding: 10px 0;
+}
+
+.langItem {
+  padding: 10px 20px;
+  text-align: start;
+  cursor: pointer;
+}
+
+.langItem:active {
+  background: #240b3636;
+}
+
+.input {
+  width: 90%;
+  outline: none;
+  height: 40px;
+  border: 2px solid #240b36;
+  background: #fff;
+  transition: 0.5s;
+  font-size: 20px;
+  padding: 0 10px;
+  margin-top: 20px;
+}
+
+.incorrectWord {
+  border-bottom: 1px solid #9999994b;
+  letter-spacing: 2px;
+}
+
+.incorrectWord span {
+  width: 135px;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: normal;
+}
+
+.headerMistakas {
+  width: 300px;
+  display: flex;
+  border-bottom: 1px solid #240b36;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.headerMistakas span:first-child {
+  width: 114px;
+}
+
+@media (max-width: 340px) {
   .container {
     padding: 0 10px;
   }
@@ -158,4 +233,3 @@ button {
     width: 100%;
   }
 }
-
