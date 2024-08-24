@@ -136,7 +136,7 @@ function App() {
   };
 
   const findLanguage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value.trim());
   };
 
   const toggleOpenLangs = () => {
