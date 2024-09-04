@@ -1,30 +1,30 @@
-import React from "react";
-import { gerung, infinitive } from "./constans/words";
-import ModalScore from "./components/ModalScore/ModalScore";
-import ModalWrongWords from "./components/ModalWrongWords/ModalWrongWords";
-import { languages } from "./constans/languages";
-import Button from "./components/Button/Button";
-import SelectLangList from "./components/SelectLanguage/SelectLangList";
-import { getTranslate } from "./utils/getTranslate";
-import { getNumber } from "./utils/getNumber";
-import { ScoreType } from "./components/ModalScore/ModalScore.types";
-import { Word } from "./constans/word.types";
-import "./App.css";
+import React from 'react';
+import { gerung, infinitive } from './constans/words';
+import ModalScore from './components/ModalScore/ModalScore';
+import ModalWrongWords from './components/ModalWrongWords/ModalWrongWords';
+import { languages } from './constans/languages';
+import Button from './components/Button/Button';
+import SelectLangList from './components/SelectLanguage/SelectLangList';
+import { getTranslate } from './utils/getTranslate';
+import { getNumber } from './utils/getNumber';
+import { ScoreType } from './components/ModalScore/ModalScore.types';
+import { Word } from './constans/word.types';
+import './App.css';
 
 function App() {
   const [infinitiveWords, setInfinitiveWords] = React.useState<string[][]>([
     ...infinitive,
   ]);
   const [gerungWords, setGerungWords] = React.useState<string[][]>([...gerung]);
-  const [translate, setTranslate] = React.useState<string>("");
+  const [translate, setTranslate] = React.useState<string>('');
   const [languageTranslate, setLanguageTranslate] = React.useState<string>(
-    localStorage.getItem("lang") ?? ""
+    localStorage.getItem('lang') ?? ''
   );
-  const [inputValue, setInputValue] = React.useState<string>("");
+  const [inputValue, setInputValue] = React.useState<string>('');
   const [isOpenLangs, setIsOpenLangs] = React.useState<boolean>(false);
 
   const [word, setWord] = React.useState<string[]>([]);
-  const [correct, setCorrect] = React.useState<string>("");
+  const [correct, setCorrect] = React.useState<string>('');
   const [score, setScore] = React.useState<ScoreType>({
     correct: 0,
     noCorrect: 0,
@@ -38,16 +38,14 @@ function App() {
 
   const showMeaning = meaning ? word[1] : word[0];
 
-  const language = languageTranslate ? JSON.parse(languageTranslate) : "";
+  const language = languageTranslate ? JSON.parse(languageTranslate) : '';
 
   React.useEffect(() => {
     getWord();
   }, []);
 
-  console.log(infinitiveWords);
-
   const getWord = () => {
-    setTranslate("");
+    setTranslate('');
     setMeaning(false);
     let list: number = 0;
     if (!infinitiveWords.length && !gerungWords.length) {
@@ -79,13 +77,13 @@ function App() {
 
   const getResult = (categofy: string) => {
     if (infinitive.includes(word) && categofy === Word.INFINITIVE) {
-      setCorrect("Correct");
+      setCorrect('Correct');
       setScore({ ...score, correct: score.correct + 1 });
     } else if (gerung.includes(word) && categofy === Word.GERUND) {
-      setCorrect("Correct");
+      setCorrect('Correct');
       setScore({ ...score, correct: score.correct + 1 });
     } else {
-      setCorrect("False");
+      setCorrect('False');
       setScore({ ...score, noCorrect: score.noCorrect + 1 });
       setNoCorrectWord([...noCorrectWord, word]);
     }
@@ -98,7 +96,7 @@ function App() {
         setFinish(true);
       }
       getWord();
-      setCorrect("");
+      setCorrect('');
       setIsDisabled(false);
     }, 1000);
   };
@@ -114,7 +112,7 @@ function App() {
 
   const getMeaning = () => {
     setMeaning((prev) => !prev);
-    setTranslate("");
+    setTranslate('');
   };
 
   const showCorectWord = () => {
@@ -130,8 +128,8 @@ function App() {
 
   const chooseLanguage = (e: React.MouseEvent<HTMLLIElement>) => {
     const target = e.target as HTMLElement;
-    localStorage.setItem("lang", target.dataset.value ?? "");
-    setLanguageTranslate(localStorage.getItem("lang") ?? "");
+    localStorage.setItem('lang', target.dataset.value ?? '');
+    setLanguageTranslate(localStorage.getItem('lang') ?? '');
     toggleOpenLangs();
   };
 
@@ -141,25 +139,25 @@ function App() {
 
   const toggleOpenLangs = () => {
     setIsOpenLangs((prev) => !prev);
-    setInputValue("");
+    setInputValue('');
   };
 
   return (
     <>
       <div
         className={
-          correct === "Correct"
-            ? "App correct"
-            : correct === "False"
-            ? "App noCorrect"
-            : "App"
+          correct === 'Correct'
+            ? 'App correct'
+            : correct === 'False'
+            ? 'App noCorrect'
+            : 'App'
         }
       >
-        <div className="container">
-          <h1 className="title">What do you need use with word?</h1>
-          <h1 className={meaning ? "meaning" : "word"}>{showCorectWord()}</h1>
-          <div className="btnsWrap">
-            <div className="btnChoose">
+        <div className='container'>
+          <h1 className='title'>What do you need to use with the word?</h1>
+          <h1 className={meaning ? 'meaning' : 'word'}>{showCorectWord()}</h1>
+          <div className='btnsWrap'>
+            <div className='btnChoose'>
               <Button
                 disabled={isDisabled}
                 onClick={() => getResult(Word.GERUND)}
@@ -174,14 +172,14 @@ function App() {
               </Button>
             </div>
             <Button
-              className="btnTranslate"
+              className='btnTranslate'
               disabled={isDisabled}
               onClick={getMeaning}
             >
-              {!meaning ? "Meaning" : "Word"}
+              {!meaning ? 'Meaning' : 'Word'}
             </Button>
             <Button
-              className="btnTranslate"
+              className='btnTranslate'
               disabled={isDisabled}
               onClick={() =>
                 getTranslate(
@@ -196,12 +194,12 @@ function App() {
               Translate
             </Button>
             <button
-              className="selectLanguage"
+              className='selectLanguage'
               onClick={toggleOpenLangs}
               disabled={isDisabled}
             >
-              Translate into:{" "}
-              <span>{language ? language.name : "English"}</span>
+              Translate into:{' '}
+              <span>{language ? language.name : 'English'}</span>
             </button>
 
             {isOpenLangs && (
@@ -216,11 +214,11 @@ function App() {
 
           {!isOpenLangs && (
             <>
-              <div className="wrapScore">
-                <p className="score">correct: {score.correct}</p>
-                <p className="score">no correct: {score.noCorrect} </p>
+              <div className='wrapScore'>
+                <p className='score'>correct: {score.correct}</p>
+                <p className='score'>no correct: {score.noCorrect} </p>
               </div>
-              <p className="score">
+              <p className='score'>
                 word number: {count} / {infinitive.length + gerung.length}
               </p>
             </>
